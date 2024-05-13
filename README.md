@@ -1,2 +1,2 @@
 # CodoACodo-MDP
-Proyecto de de Node Js Codo a Codo
+Proyecto de Node Js Codo a Codo
