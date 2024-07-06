@@ -21,7 +21,23 @@ const getProductsById =(req,res) => {
     })
 }
 
+const createProduct = (req,res) => {
+    const {name, data, imageUrl, stock} =req.body;
+    const sql= 'INSERT INTO products (name, data, imageUrl, stock) VALUES (?, ?, ?, ?)';
+    db.query(sql, [name, data, imageUrl, stock], (err, results) =>{
+        if (err){
+            console.error('Error al crear producto:', err);
+            res.status(500).json({error:'Error al crear producto'});
+            return;
+        }
+        res.json({messege:'Producto creado', productID: results.insertId})
+        
+    })
+
+}
+
 module.exports ={
     getAllProducts,
-    getProductsById
+    getProductsById,
+    createProduct,
 }

@@ -1,7 +1,7 @@
 const express = require('express');
 const productosRoutes =require ('../routes/productosRoutes')
 const app = express();
-const PORT = 3101;
+const PORT = 3111;
 
 app.use(express.json());
 app.use('/productos', productosRoutes);
