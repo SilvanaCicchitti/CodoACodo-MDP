@@ -36,8 +36,23 @@ const createProduct = (req,res) => {
 
 }
 
+const updateProduct = (req,res) =>{
+    const {id_product}= req.params;
+    const {name, data, imageUrl, stock} =req.body;
+    const sql ='UPDATE products SET name = ?, data = ?, imageUrl= ?, stock= ? WHERE id_product = ?';
+    db.query( sql, [name, data, imageUrl, stock, id_product], (err, result)=>{
+        if(err){
+            console.error('Error al modificar producto:', err);
+            res.status(500).json({error:'Error al modificar producto'});
+            return;
+        }
+        res.json ({message: "producto actualizado"});
+});
+};
+
 module.exports ={
     getAllProducts,
     getProductsById,
     createProduct,
+    updateProduct,
 }
